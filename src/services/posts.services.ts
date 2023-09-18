@@ -26,10 +26,10 @@ export const postServices = {
     $match.push({
       $sort: { 'created_at': -1 }
     });
-    if (sort_by === 'topic') {
+    if (sort_by === 'post') {
       const sortOrder = order === 'asc' ? 1 : -1
       const sortObject: any = {}
-      sortObject['topic'] = sortOrder
+      sortObject['post'] = sortOrder
       $match.push({
         '$sort': sortObject
       })
