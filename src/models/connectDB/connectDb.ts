@@ -64,7 +64,7 @@ export const createIndexAuthor = async () => {
 
 export const connectDB = async () => {
   try {
-    await mongoose.connect('mongodb://127.0.0.1:27017/intern_project')
+    await mongoose.connect('mongodb+srv://ngocduong:user123@ngocduong.t3arsrx.mongodb.net/intern_project')
     console.log("connect successfully")
   }
   catch (error) {
