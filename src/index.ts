@@ -12,7 +12,9 @@ const port = consfigENV.port
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
 
-
+app.get('/', (req, res) =>{
+  return res.send('hello')
+})
 app.use(
   cors({
     "origin": "http://localhost:3000",
