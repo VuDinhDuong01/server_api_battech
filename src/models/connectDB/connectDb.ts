@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose  from "mongoose";
 import { topicModel } from "../model/topic.model";
 import { tagModel } from "../model/tag.model";
 import { authorModel } from "../model/author.model";
@@ -61,12 +61,13 @@ export const createIndexAuthor = async () => {
     console.error("Lỗi khi tạo chỉ số:", error);
   }
 }
+
 export const connectDB = async () => {
   try {
-    await mongoose.connect('mongodb://localhost:27017/intern_project')
+    await mongoose.connect('mongodb://127.0.0.1:27017/intern_project')
     console.log("connect successfully")
   }
   catch (error) {
-    console.log("connect failed")
+    console.log(error)
   }
 }

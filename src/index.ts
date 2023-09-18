@@ -11,9 +11,7 @@ const port = consfigENV.port
 
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
-app.use('/', (req, res) => {
-  return res.send('server on')
-})
+
 
 app.use(
   cors({
