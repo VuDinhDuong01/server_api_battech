@@ -34,11 +34,6 @@ export const topicServices = {
       },
 
     },
-    // {
-    //   $addFields: {
-    //     count: { $size: '$baiviets' } // Tính số lượng bài viết cho mỗi chủ đề và thêm trường "count"
-    //   }
-    // }
 )
 
     $match.push({
