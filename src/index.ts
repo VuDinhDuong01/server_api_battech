@@ -17,10 +17,11 @@ app.get('/', (req, res) =>{
 })
 app.use(
   cors({
-    "origin": "*",
+    "origin": "http://localhost:3000",
     "methods": "GET,PUT,POST,DELETE",
     "allowedHeaders": ['Content-Type', 'Authorization']
   }))
+
 
 connectDB().then(() => {
   createIndexTopic()
@@ -28,6 +29,7 @@ connectDB().then(() => {
   createIndexAuthor()
   createIndexPost()
 })
+
 routes(app)
 app.use(handleError)
 app.listen(port as number, () => {

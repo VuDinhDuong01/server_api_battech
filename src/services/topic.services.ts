@@ -14,7 +14,7 @@ export const topicServices = {
   getAllTopic: async ({ limit, page, name, category, sort_by, order }:
     { limit: string, page: string, name?: string | null, category?: string | null, sort_by?: string | null, order?: string }) => {
     const $match: any[] = []
-    
+
     if (name) {
       $match.push({
         '$match': {
@@ -25,6 +25,22 @@ export const topicServices = {
 
       })
     }
+    $match.push({
+      $lookup: {
+        from: 'posts',
+        localField: 'topic',
+        foreignField: 'topic',
+        as: 'result'
+      },
+
+    },
+    // {
+    //   $addFields: {
+    //     count: { $size: '$baiviets' } // Tính số lượng bài viết cho mỗi chủ đề và thêm trường "count"
+    //   }
+    // }
+)
+
     $match.push({
       $sort: { 'created_at': -1 }
     });
@@ -56,11 +72,11 @@ export const topicServices = {
       total_page: Math.ceil(totalItem / Number(limit))
     }
   },
-  getAll:async()=>{
-    const response= await topicModel.find({})
+  getAll: async () => {
+    const response = await topicModel.find({})
     return {
-      message:"lấy data successfully",
-      data:response
+      message: "lấy data successfully",
+      data: response
     }
   },
   deleteTopic: async (topic_id: string) => {
