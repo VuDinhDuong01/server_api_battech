@@ -19,6 +19,14 @@ export const topicControllers = {
     const result = await topicServices.getAllTopic({ page: page as string, limit: limit as string, name: name as string | null, category: category as string | null, sort_by: sort_by as string, order: order as string })
     return res.json(result)
   },
+  getAll: async (req: Request, res: Response) => {
+    try {
+      const result = await topicServices.getAll()
+      return res.json(result)
+    } catch (err) {
+      console.log(err)
+    }
+  },
   deleteTopic: async (req: Request, res: Response) => {
     try {
       const { topic_id } = req.params

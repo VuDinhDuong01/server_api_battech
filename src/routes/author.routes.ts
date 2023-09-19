@@ -6,6 +6,7 @@ import { validationAccessToken } from "~/middlewares/validationUser.middlewares"
 const routes = Router()
 routes.post('/authors', validationAccessToken, validationAuthor, authorControllers.createauthor)
 routes.get('/authors', validationAccessToken, authorControllers.getAllAuthor)
+routes.get('/author', validationAccessToken, authorControllers.getAll)
 routes.delete('/authors/:author_id', validationAccessToken, validationAuthorId, authorControllers.deleteAuthor)
 routes.delete('/authors', validationAccessToken,validationArrayId, authorControllers.deleteManyAuthor)
 

@@ -58,6 +58,14 @@ export const tagServices = {
       total_page: Math.ceil(totalItem / Number(limit))
     }
   },
+  
+  getAll:async()=>{
+    const response= await tagModel.find({})
+    return {
+      message:"lấy data successfully",
+      data:response
+    }
+  },
 
   deleteTag: async (tag_id: string) => {
     await tagModel.deleteOne({ _id: new mongoose.Types.ObjectId(tag_id) })

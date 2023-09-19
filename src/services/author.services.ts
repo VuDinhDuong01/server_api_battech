@@ -55,6 +55,13 @@ export const authorServices = {
       total_page: Math.ceil(totalItem / Number(limit))
     }
   },
+  getAll:async()=>{
+    const response= await authorModel.find({})
+    return {
+      message:"lấy data successfully",
+      data:response
+    }
+  },
   deleteAuthor: async (author_id: string) => {
     await authorModel.deleteOne({ _id: new mongoose.Types.ObjectId(author_id) })
     return {

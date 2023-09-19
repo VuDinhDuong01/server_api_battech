@@ -53,7 +53,7 @@ export const postServices = {
       total_page: Math.ceil(totalItem / Number(limit))
     }
   },
-
+ 
   deletePost: async (post_id: string) => {
     await postModel.deleteOne({ _id: new mongoose.Types.ObjectId(post_id) })
     return {

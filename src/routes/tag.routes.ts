@@ -8,6 +8,7 @@ import { validationAccessToken } from "~/middlewares/validationUser.middlewares"
 const routes = Router()
 routes.post('/tags', validationAccessToken, validationTag, tagControllers.createTag)
 routes.get('/tags', validationAccessToken, tagControllers.getAllTag)
+routes.get('/tag', validationAccessToken, tagControllers.getAll)
 routes.delete('/tags/:tag_id', validationAccessToken, validationTagId, tagControllers.deleteTag)
 routes.delete('/tags', validationAccessToken,validationArrayId, tagControllers.deleteManyTag)
 routes.put('/tags/:tag_id', validationAccessToken, validationTagId, tagControllers.changeTag)

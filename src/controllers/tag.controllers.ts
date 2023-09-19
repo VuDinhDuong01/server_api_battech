@@ -15,12 +15,19 @@ export const tagControllers = {
       console.log(err)
     }
   },
-  getAllTag:async(req: Request, res: Response) => {
-    const {page, limit,name,sort_by,order}= req.query
-    const result= await tagServices.getAllTag({page:page as string , limit:limit as string,name:name as string ,sort_by:sort_by as string ,order:order as string})
+  getAllTag: async (req: Request, res: Response) => {
+    const { page, limit, name, sort_by, order } = req.query
+    const result = await tagServices.getAllTag({ page: page as string, limit: limit as string, name: name as string, sort_by: sort_by as string, order: order as string })
     return res.json(result)
   },
-
+  getAll: async (req: Request, res: Response) => {
+    try {
+      const result = await tagServices.getAll()
+      return res.json(result)
+    } catch (err) {
+      console.log(err)
+    }
+  },
   deleteTag: async (req: Request, res: Response) => {
     try {
       const { tag_id } = req.params
@@ -30,12 +37,12 @@ export const tagControllers = {
       console.log(err)
     }
   },
-  deleteManyTag:async(req: Request, res: Response) => {
-    try{
-      const {manyId}= req.body
-      const result =  await tagServices.deleteManyTag(manyId)
+  deleteManyTag: async (req: Request, res: Response) => {
+    try {
+      const { manyId } = req.body
+      const result = await tagServices.deleteManyTag(manyId)
       return res.json(result)
-    }catch(err){
+    } catch (err) {
       console.log(err)
     }
 

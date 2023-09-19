@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
- import { authorServices } from '~/services/author.services' 
+import { authorServices } from '~/services/author.services'
 import { ParamsDictionary } from 'express-serve-static-core'
 import { AuthorType } from '~/models/schemas/author.schemas'
 
@@ -12,10 +12,18 @@ export const authorControllers = {
       console.log(err)
     }
   },
-  getAllAuthor: async(req: Request, res: Response) => {
-    const {page, limit,name,sort_by,order}= req.query
-    const result= await authorServices.getAllAuthor({page:page as string , limit:limit as string,name:name as string ,sort_by:sort_by as string ,order:order as string})
+  getAllAuthor: async (req: Request, res: Response) => {
+    const { page, limit, name, sort_by, order } = req.query
+    const result = await authorServices.getAllAuthor({ page: page as string, limit: limit as string, name: name as string, sort_by: sort_by as string, order: order as string })
     return res.json(result)
+  },
+  getAll: async (req: Request, res: Response) => {
+    try {
+      const result = await authorServices.getAll()
+      return res.json(result)
+    } catch (err) {
+      console.log(err)
+    }
   },
   deleteAuthor: async (req: Request, res: Response) => {
     try {
@@ -26,12 +34,12 @@ export const authorControllers = {
       console.log(err)
     }
   },
-  deleteManyAuthor:async(req: Request, res: Response) => {
-    try{
-      const {manyId}= req.body
-      const result =  await authorServices.deleteManyAuthor(manyId)
+  deleteManyAuthor: async (req: Request, res: Response) => {
+    try {
+      const { manyId } = req.body
+      const result = await authorServices.deleteManyAuthor(manyId)
       return res.json(result)
-    }catch(err){
+    } catch (err) {
       console.log(err)
     }
 

@@ -56,6 +56,13 @@ export const topicServices = {
       total_page: Math.ceil(totalItem / Number(limit))
     }
   },
+  getAll:async()=>{
+    const response= await topicModel.find({})
+    return {
+      message:"lấy data successfully",
+      data:response
+    }
+  },
   deleteTopic: async (topic_id: string) => {
     await topicModel.deleteOne({ _id: new mongoose.Types.ObjectId(topic_id) })
     return {
